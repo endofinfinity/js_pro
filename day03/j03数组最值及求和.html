@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        // max
+        const arr = [1, 2, 3, 4]
+        Array.prototype.max = function () {
+            // 数组的展开运算符。。。arr
+            // this指向匿名函数的调用者arr
+            return Math.max(...this)
+        }
+
+        console.log(arr.max());
+        console.log([3, 4, 5].max());
+
+        // min 
+        Array.prototype.min = function () {
+            // 数组的展开运算符。。。arr
+            // this指向匿名函数的调用者arr
+            return Math.min(...this)
+        }
+
+        console.log(arr.min());
+        console.log([3, 4, 5].min());
+
+        // sum 
+        Array.prototype.sum = function () {
+            return this.reduce((prev, i) => prev + i, 0)
+        }
+
+        console.log(arr.sum());
+
+
+
+    </script>
+</body>
+
+</html>

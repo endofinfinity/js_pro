@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        // const Animal = {
+        //   eyes: 2,
+        //   head: 1
+        // }
+
+        function Animal() {
+            this.eyes = 2
+            this.head = 1
+        }
+
+        function Duck() {}
+        // 1、构造函数duck通过原型来继承animal，new出来的duck1,2，3都可以用该公共属性了
+        // Duck.prototype = Animal 不能用对象直接继承，new Animal() 可以解决此问题
+        Duck.prototype = new Animal()
+        // 2、需要自己通过constructor指回自己（Duck）的构造函数
+        Duck.prototype.constructor = Duck
+
+        Duck.prototype.baby = function () {
+            console.log('宝贝');
+        }
+
+        const red = new Duck()
+        // 实例对象red的原型__proto__指向构造函数Duck的原型prototype
+        console.log(red);
+        // 原型指向继承的animal
+        console.log(Duck.prototype);
+        // constructor指回duck自己
+        console.log(Duck.prototype.constructor);
+
+        function Chiken(){}  
+        Chiken.prototype = new Animal()
+        Chiken.prototype.constructor = Chiken
+        const green = new Chiken()
+        console.log(green);
+
+    </script>
+</body>
+
+</html>

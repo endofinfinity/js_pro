@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        // 展开运算符,使用场景：求最大值；合并数组
+        const arrsy = [1,2,3]
+        console.log(...arrsy);
+
+        const arr1 = [2,2,2]
+        console.log([...arr1,...arrsy]);
+
+        // 1、箭头函数
+        const fn = () => {
+            console.log(123);
+        }
+        fn()
+
+        // 2、只有一个形参可以省略小括号
+        const fn1 = n => {
+            console.log(n);
+        }
+        fn1(1111)
+
+        // 3、只有一行省略(){}
+        const fn2 = n => console.log(n);
+        fn2(11112)
+
+        const fn3 = n => {
+            return n + n
+        }
+        fn3(1111)
+        // 4、省略return
+        const fn4 = n =>  n + n
+        console.log(fn4(1111));
+
+        // 5、返回对象
+        const fn5 = (uname) => ({ uname : uname })
+        console.log(fn5('pink'));
+        
+        // 6、this指向
+        // 普通函数
+        console.log(this); // => window
+
+        function fn6() { 
+            console.log(this); // =>fn => window
+         }
+        
+        fn6()
+        //  普通函数
+        const obj = {
+            name : 'andy',
+            sayHi :function(){
+                console.log(this); // => sayHi => obj
+            }
+        }
+        obj.sayHi()
+
+        // 箭头函数，没有自我绑定的this，用的this指向上层作用域的this
+        const fn7 = () => console.log(this); // => 上层fn7的this =>window
+        fn7()
+
+        const obj2 = {
+            name : 'andy',
+            sayHi :() => {
+                console.log(this); // => sayHi没有this，上层obj2的this =>window
+            }
+        }
+        obj2.sayHi()
+    </script>
+</body>
+</html>
